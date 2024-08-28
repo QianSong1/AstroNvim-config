@@ -30,12 +30,12 @@ return {
         relativenumber = false, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
         expandtab = true, -- do expand tab to space
-        shiftwidth = 8, -- auto indent have 8 space
-        tabstop = 8, -- one tab have 8 space
-        softtabstop = 8, -- one backspace will delete 8 space of 1 tab or 1 indentation
+        shiftwidth = 2, -- auto indent have 8 space
+        tabstop = 2, -- one tab have 8 space
+        softtabstop = 2, -- one backspace will delete 8 space of 1 tab or 1 indentation
         guicursor = "a:blinkon100", -- enable cursor blinking
       },
       g = { -- vim.g.<key>
@@ -51,28 +51,26 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- navigate buffer tabs
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = {
+        ["<Leader>bd"] = {
           function()
             require("astroui.status.heirline").buffer_picker(
               function(bufnr) require("astrocore.buffer").close(bufnr) end
             )
           end,
-          desc = "Pick to close",
+          desc = "Close buffer from tabline",
         },
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
-        -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-      },
-      t = {
+        -- ["<Leader>b"] = { desc = "Buffers" },
+
         -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
+        -- ["<C-S>"] = false,
       },
     },
   },
