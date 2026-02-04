@@ -53,7 +53,10 @@ return {
             end
           end),
         },
-        hl = status.hl.get_attributes "mode", -- highlight based on mode attributes
+        hl = {
+          fg = "#000000", -- mandatory black text to ensure clarity
+          bold = false, -- bold text
+        },
         surround = { separator = "right", color = status.hl.mode_bg }, -- background highlight based on mode
       },
     }
