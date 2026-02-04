@@ -11,6 +11,5 @@ return {
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.color.transparent-nvim" },
-  { import = "astrocommunity.colorscheme.everforest" },
   -- import/override with your plugins folder
 }
